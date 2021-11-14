@@ -44,7 +44,7 @@ void FileSegment::segment(string file_name, int segment_num, string json_file) {
     for (int i = 0; i < segment_num; i++) {
     	ofstream segment_file_output(segment_files[i]);
     	if (i == segment_num-1) {  // 最后一次，要将剩余文件片全部写入
-    		size_t left_size = src_file_size % segment_size;
+    		size_t left_size = src_file_size % segment_num;
     		copy_file(src_file_input, segment_file_output, segment_size + left_size);
     	} else {
     		copy_file(src_file_input, segment_file_output, segment_size);
